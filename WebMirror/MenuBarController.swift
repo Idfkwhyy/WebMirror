@@ -9,6 +9,7 @@ class MenuBarController: NSObject, NSPopoverDelegate {
     private var menu: NSMenu
     private var currentPopoverSize: (width: CGFloat, height: CGFloat) = (480, 240)
     private var globalClickMonitor: Any?
+    private let iconNames = ["camcoder", "dslr", "eyes", "rearmirror", "sidemirror", "webcam", "webcam2"]
 
 
     override init() {
@@ -22,6 +23,8 @@ class MenuBarController: NSObject, NSPopoverDelegate {
         self.menu = NSMenu()
 
         super.init()
+        
+        loadSavedIcon()
 
         if let button = statusItem.button {
             let icon = NSImage(named: "webcam")
@@ -67,6 +70,12 @@ class MenuBarController: NSObject, NSPopoverDelegate {
         menu.addItem(NSMenuItem.separator())
         
         let moreMenu = NSMenu()
+            let chooseRandomIconItem = NSMenuItem(title: "Choose Random Icon", action: #selector(chooseRandomIcon), keyEquivalent: "")
+            chooseRandomIconItem.target = self
+            moreMenu.addItem(chooseRandomIconItem)
+        
+            moreMenu.addItem(NSMenuItem.separator())
+
             launchAtLoginItem = NSMenuItem(title: "Launch at Login", action: #selector(toggleLaunchAtLogin), keyEquivalent: "")
                 launchAtLoginItem?.target = self
                 updateLaunchAtLoginState()
@@ -229,6 +238,30 @@ class MenuBarController: NSObject, NSPopoverDelegate {
     }
     
     
+    @objc private func chooseRandomIcon() {
+        guard let randomIconName = iconNames.randomElement() else { return }
+
+        UserDefaults.standard.set(randomIconName, forKey: "selectedMenuBarIcon")
+
+        updateMenuBarIcon(named: randomIconName)
+    }
+    
+    
+    private func updateMenuBarIcon(named iconName: String) {
+        if let button = statusItem.button {
+            let icon = NSImage(named: iconName)
+            icon?.isTemplate = true
+            button.image = icon
+        }
+    }
+    
+    
+    private func loadSavedIcon() {
+        let savedIconName = UserDefaults.standard.string(forKey: "selectedMenuBarIcon") ?? "webcam"
+        updateMenuBarIcon(named: savedIconName)
+    }
+    
+    
     @objc private func resetPermissions() {
         let alert = NSAlert()
         alert.messageText = "Reset Camera Permissions"
@@ -281,7 +314,7 @@ class MenuBarController: NSObject, NSPopoverDelegate {
         versionLabel.alignment = .center
         versionLabel.font = NSFont.systemFont(ofSize: 10)
 
-        let authorLabel = NSTextField(labelWithString: "by Leoleo")
+        let authorLabel = NSTextField(labelWithString: "by ")
         authorLabel.frame = NSRect(x: 0, y: startY - (65 + 3 * spacing), width: windowWidth, height: 20)
         authorLabel.alignment = .center
         authorLabel.font = NSFont.systemFont(ofSize: 10)

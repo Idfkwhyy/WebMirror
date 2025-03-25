@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "aperture.svg",
+      "filename" : "webcam2.svg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "aperture 1.svg",
+      "filename" : "webcam2 1.svg",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "aperture 2.svg",
+      "filename" : "webcam2 2.svg",
       "idiom" : "universal",
       "scale" : "3x"
     }
