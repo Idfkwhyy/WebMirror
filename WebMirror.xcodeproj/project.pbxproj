@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A7247F7D2D8E07E0009D8DC8 /* LaunchAtLogin in Frameworks */ = {isa = PBXBuildFile; productRef = A7247F7C2D8E07E0009D8DC8 /* LaunchAtLogin */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		A7247F552D8E06F7009D8DC8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -52,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A7247F7D2D8E07E0009D8DC8 /* LaunchAtLogin in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +117,7 @@
 			);
 			name = WebMirror;
 			packageProductDependencies = (
+				A7247F7C2D8E07E0009D8DC8 /* LaunchAtLogin */,
 			);
 			productName = WebMirror;
 			productReference = A7247F432D8E06F5009D8DC8 /* WebMirror.app */;
@@ -195,6 +201,9 @@
 			);
 			mainGroup = A7247F3A2D8E06F5009D8DC8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				A7247F7B2D8E07E0009D8DC8 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = A7247F442D8E06F5009D8DC8 /* Products */;
 			projectDirPath = "";
@@ -401,6 +410,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"WebMirror needs access to your camera to display the live feed and show ur pretty face X3\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -428,6 +438,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "\"WebMirror needs access to your camera to display the live feed and show ur pretty face X3\"";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -549,6 +560,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A7247F7B2D8E07E0009D8DC8 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/LaunchAtLogin";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A7247F7C2D8E07E0009D8DC8 /* LaunchAtLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A7247F7B2D8E07E0009D8DC8 /* XCRemoteSwiftPackageReference "LaunchAtLogin" */;
+			productName = LaunchAtLogin;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A7247F3B2D8E06F5009D8DC8 /* Project object */;
 }
